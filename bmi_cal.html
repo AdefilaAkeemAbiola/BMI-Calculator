@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMICAL</title>
+
+    <style>
+        .mybody{
+            min-height: 100vh;
+            align-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: turquoise;
+        }
+
+        .btn{
+            padding: 15px;
+            border-radius:10px;
+            background: green;
+            margin-left: 40px;
+            border: 2px solid grey;
+            
+        }
+
+        .btn:hover{
+            background: crimson;
+            color: darkolivegreen;
+        }
+
+        
+        .rst{
+            padding: 15px;
+            border-radius:10px;
+            background: yellow;
+            margin-right:40px;
+            border: 2px solid grey;
+            
+        }
+
+        .rst:hover{
+            background:rosybrown;
+            color: darkolivegreen;
+        }
+
+        input{
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: 2px solid grey;
+            
+        }
+
+        label{
+            background: tomato;
+            width: 60%;
+            border-radius: 5px;
+            padding: 2px;
+            text-align: center;
+            margin:0;
+            border: 2px solid grey;
+            
+
+
+        }
+    </style>
+
+</head>
+<body>
+<!---->
+
+    <div class="mybody">
+
+    <h1 style="text-align: center;">Bmi Calculator</h1>
+    <form style="display: grid;" >
+        <label for="name">Your Name</label><br>
+        <input type="text" id="name" placeholder="enter your name"><br>
+
+        <label for="height">Your Height in meters</label><br>
+        <input type= "number" id="height" placeholder="enter your height"><br>
+
+        <label for="weight">Your weight in Kg</label><br>
+        <input type="number" id="weight" placeholder="enter your weight"><br>
+        <div style="display:flex;">
+            <button onclick="calBmi()" class="btn">
+                MY BMI
+            </button>
+            <button onclick="reset()" class="rst">
+            RESET
+            </button>
+
+          
+        </div>
+    </form>
+
+
+    
+    <h1 id=displayResult></h1>
+
+ </div>
+
+<script>
+
+var result = document.getElementById('displayResult');
+
+ 
+ function calBmi(){
+    var name = document.getElementById('name');
+var height = document.getElementById('height');
+var weight = document.getElementById('weight');
+
+
+
+if (name.value=="" || height.value == "" || weight.value == ""){
+    alert('one of the fields is not filled' )
+}
+else if (name.value!="" && height.value != "" && weight.value != ""){
+    var bmiCal =Math.round(weight.value/Math.pow(height.value,2),2);
+    
+
+
+if (bmiCal<30){
+    result.innerHTML = "Bmi value is " + bmiCal +", " + name.value + " is " + "<span style='color:green'>NOT OVER WEIGHT.</span>";   ;
+    }
+   
+
+
+else {
+    result.innerHTML = "Bmi value is " + bmiCal +", " + name.value + " is " + "<span style='color:red'>OVER WEIGHT.</span>" ; 
+}
+
+
+//console.log()
+}
+
+}
+
+
+</script>
+
+</body>
+</html>
